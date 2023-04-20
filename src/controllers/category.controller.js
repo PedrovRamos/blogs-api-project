@@ -1,5 +1,5 @@
 const httpStatus = require('../utils/httpStatus');
-const { insertCategory } = require('../services/category.service');
+const { insertCategory, getAllCategories } = require('../services/category.service');
 
 const insertNewCategory = async (req, res) => {
     try {
@@ -12,6 +12,12 @@ const insertNewCategory = async (req, res) => {
     }
 };
 
+const getCategories = async (req, res) => {
+    const allCategories = await getAllCategories();
+    return res.status(httpStatus.OK).json(allCategories);
+};
+
 module.exports = {
     insertNewCategory,
+    getCategories,
 };
