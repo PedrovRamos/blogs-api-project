@@ -1,6 +1,6 @@
 const httpStatus = require('../utils/httpStatus');
 
-const { insertUser } = require('../services/user.service');
+const { insertUser, getAllUsers } = require('../services/user.service');
 
 const insertNewUser = async (req, res) => {
     try {
@@ -15,6 +15,12 @@ const insertNewUser = async (req, res) => {
     }
 };
 
+const getUsers = async (_req, res) => {
+    const allUsers = await getAllUsers();
+    return res.status(httpStatus.OK).json(allUsers);
+};
+
 module.exports = {
     insertNewUser,
+    getUsers,
 };

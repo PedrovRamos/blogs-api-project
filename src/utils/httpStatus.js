@@ -6,6 +6,7 @@ const httpStatus = {
   UNPROCESSABLE_CONTENT: 422,
   NO_CONTENT: 204,
   CONFLICT: 409,
+  UNAUTHORIZED_RESPONSE: 401,
 };
 
 module.exports = httpStatus;

@@ -15,8 +15,6 @@ const insertUser = async (email, password, displayName, image) => {
     where: { email, password },
   });
 
-  console.log(email, password);
-
   if (user) { throw new Error('User already registered'); }
 
   await User.create({ displayName, email, password, image });
@@ -25,4 +23,13 @@ const insertUser = async (email, password, displayName, image) => {
   return token;
 };
 
-module.exports = { insertUser };
+const getAllUsers = async () => {
+  const allUsers = await User.findAll(
+    {
+      attributes: { exclude: ['password'] },
+    },
+  );
+  return allUsers;
+};
+
+module.exports = { insertUser, getAllUsers };
