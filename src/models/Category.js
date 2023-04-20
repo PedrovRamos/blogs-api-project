@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
   });
 
-  // User.associate = (models) => {
-  //   User.hasMany(
-  //     models.BlogPost,
-  //     { foreignKey: 'user_id', as: 'blog_post' }
-  //   );
-  // };
+  Category.associate = (models) => {
+    Category.hasMany(models.PostCategory, {
+      foreignKey: 'category_id',
+      as: 'posts_categories',
+    });
+  }
 
   return Category;
 };
