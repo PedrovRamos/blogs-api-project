@@ -24,12 +24,22 @@ const insertUser = async (email, password, displayName, image) => {
 };
 
 const getAllUsers = async () => {
-  const allUsers = await User.findAll(
-    {
-      attributes: { exclude: ['password'] },
-    },
-  );
+  const allUsers = await User.findAll({
+    attributes: { exclude: ['password'] },
+  });
   return allUsers;
 };
 
-module.exports = { insertUser, getAllUsers };
+const getById = async (id) => {
+  const user = await User.findOne({
+    where: { id },
+    attributes: { exclude: ['password'] },
+  });
+
+  if (!user) {
+    throw new Error('User does not exist');
+  }
+  return user.dataValues;
+};
+
+module.exports = { insertUser, getAllUsers, getById };

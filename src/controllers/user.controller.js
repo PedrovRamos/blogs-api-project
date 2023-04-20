@@ -1,6 +1,6 @@
 const httpStatus = require('../utils/httpStatus');
 
-const { insertUser, getAllUsers } = require('../services/user.service');
+const { insertUser, getAllUsers, getById } = require('../services/user.service');
 
 const insertNewUser = async (req, res) => {
     try {
@@ -20,7 +20,18 @@ const getUsers = async (_req, res) => {
     return res.status(httpStatus.OK).json(allUsers);
 };
 
+const getUserById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await getById(id);
+        return res.status(httpStatus.OK).json(user);
+    } catch (err) {
+        return res.status(httpStatus.NOT_FOUND).json({ message: err.message });
+    }
+};
+
 module.exports = {
     insertNewUser,
     getUsers,
+    getUserById,
 };
