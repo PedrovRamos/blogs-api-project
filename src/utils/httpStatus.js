@@ -5,6 +5,7 @@ const httpStatus = {
   CREATED: 201,
   UNPROCESSABLE_CONTENT: 422,
   NO_CONTENT: 204,
+  CONFLICT: 409,
 };
 
 module.exports = httpStatus;
