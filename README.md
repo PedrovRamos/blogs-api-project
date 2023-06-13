@@ -15,5 +15,4 @@ Para realizar esse projeto, utilizei as tecnologias:
   <li>Sequelize</li>
   <li>Express</li>
   <li>JWT Web Token</li>
-  <li>JWT Web Token</li>
 </ul>
